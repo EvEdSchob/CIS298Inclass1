@@ -122,8 +122,15 @@ public class QuizActivity extends AppCompatActivity {
                 //It is operating on the RadioButton widget, and thus return s the
                 //id of the widget control.
                 int selectedAnswerId = mQuestionGroup.getCheckedRadioButtonId();
-                //Call checkAnswer sending in the selectedAnswerId
-                checkAnswer(selectedAnswerId);
+
+                //Check if the user has selected a radio button
+                if (selectedAnswerId == -1){
+                    //Toast not selected
+                    Toast.makeText(QuizActivity.this, R.string.not_selected_error, Toast.LENGTH_SHORT).show();
+                } else {
+                    //Call checkAnswer sending in the selectedAnswerId
+                    checkAnswer(selectedAnswerId);
+                }
             }
         });
 
@@ -135,6 +142,8 @@ public class QuizActivity extends AppCompatActivity {
                 //if it is about to become 5.
                 mCurrentIndex = (mCurrentIndex +1) % mQuestions.length;
                 int question = mQuestions[mCurrentIndex].getTextResId();
+                //Reset the radio group
+                mQuestionGroup.clearCheck();
                 updateQuestion();
             }
         });

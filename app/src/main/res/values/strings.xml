@@ -35,6 +35,8 @@
 
     <string name="submit_button">Submit</string>
 
+    <string name="not_selected_error">Please select an answer!</string>
+
 
 
 
